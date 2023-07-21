@@ -23,11 +23,10 @@ namespace Base.Application.Validators
         /// </summary>
         public City()
         {
-            // Name is mandatory
-            RuleFor(entity => entity.Operation)
-                .NotNull().WithMessage(ResourceValidations.FieldCantBeNull)
-                .NotEmpty().WithMessage(ResourceValidations.FieldCantBeEmpty);
-            
+            //{ValidatorsIsRequiredField}
+            //{ValidatorsMaxLengthField}
+            //{ValidatorsPrecisionField}
+
         }
     }
 }
