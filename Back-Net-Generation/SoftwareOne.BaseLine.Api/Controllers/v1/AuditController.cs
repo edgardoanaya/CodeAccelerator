@@ -7,9 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 // <copyright company="SoftwareOne">Copyright(c) 2023 All Rights Reserved.</copyright>
-// <author>Santiago Gil Roldán</author>
-// <email>mailto:santiago.gil2@softwareone.com</email>
-// <summary>API RestFull to expose the methods of the entity [Audit]</summary>
+// <author>Jessica Antía Hortúa</author>
+// <email>mailto:jessica.antia@softwareone.com</email>
+// <summary>API Rest to expose the methods of the entity [Audit]</summary>
 using Microsoft.AspNetCore.Mvc;
 
 namespace SoftwareOne.BaseLine.Api.Controllers
@@ -22,5 +22,38 @@ namespace SoftwareOne.BaseLine.Api.Controllers
                           Core.Controller.BaseController<Entities.Audit,
                                          EntitiesDto.Audit,
                                          Interfaces.ApplicationServices.Facade.IAudit>
-    { }
+    {
+        /// <summary>
+        /// Post method not implemented for the entity [Audit].
+        /// </summary>
+        /// <param name="objCreate"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public override Task<IActionResult> Post([FromBody] EntitiesDto.Audit objCreate)
+        {
+            return Task.FromResult<IActionResult>(NotFound());
+        }
+
+        /// <summary>
+        /// Put method not implemented for the entity [Audit].
+        /// </summary>
+        /// <param name="objUpdate"></param>
+        /// <returns></returns>
+        [HttpPut]
+        public override Task<IActionResult> Put([FromBody] EntitiesDto.Audit objUpdate)
+        {
+            return Task.FromResult<IActionResult>(NotFound());
+        }
+
+        /// <summary>
+        /// Delete method not implemented for the entity [Audit].
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpDelete("{id:int}")]
+        public override Task<IActionResult> Delete(int id)
+        {
+            return Task.FromResult<IActionResult>(NotFound());
+        }
+    }
 }

@@ -24,6 +24,7 @@ namespace SoftwareOne.BaseLine.ApplicationServices.Facade
             {
                 cfg.CreateMap<SoftwareOne.BaseLine.Entities.City, SoftwareOne.BaseLine.EntitiesDto.City>();
                 cfg.CreateMap<SoftwareOne.BaseLine.EntitiesDto.City, SoftwareOne.BaseLine.Entities.City>();
+                //{MapperFacadeForeignKey}
             });
     }
 }

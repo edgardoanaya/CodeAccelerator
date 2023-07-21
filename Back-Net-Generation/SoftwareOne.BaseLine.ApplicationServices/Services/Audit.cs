@@ -7,9 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 // <copyright company="SoftwareOne">Copyright(c) 2023 All Rights Reserved.</copyright>
-// <author>Santiago Gil Roldán</author>
-// <email>mailto:santiago.gil2@softwareone.com</email>
+// <author>Jessica Antía Hortúa</author>
+// <email>mailto:jessica.antia@softwareone.com</email>
 // <summary>Class of the implementation of the services of the application for the Entity (Audit)</summary>
+using Base.Application.Validators;
 
 namespace SoftwareOne.BaseLine.ApplicationServices.Services
 {
@@ -18,7 +19,7 @@ namespace SoftwareOne.BaseLine.ApplicationServices.Services
     /// </summary>
     public partial class Audit :
         Core.Services.BaseApplicationServices<Entities.Audit,
-                                              Interfaces.DataAccess.IAudit,
+                                              Interfaces.DataAccess.IAudit, 
                                               Base.Application.Validators.Audit>,
         Interfaces.ApplicationServices.Services.IAudit
     {

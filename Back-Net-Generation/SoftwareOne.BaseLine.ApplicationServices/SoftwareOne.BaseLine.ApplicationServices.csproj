@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Facade\Extended\" />
     <Folder Include="Services\Extended\" />
   </ItemGroup>
 

@@ -26,7 +26,7 @@ namespace SoftwareOne.BaseLine.ApplicationServices.Facade
                 cfg.CreateMap<SoftwareOne.BaseLine.EntitiesDto.Product, SoftwareOne.BaseLine.Entities.Product>();
                 cfg.CreateMap<SoftwareOne.BaseLine.Entities.Category, SoftwareOne.BaseLine.EntitiesDto.Category>();
                 cfg.CreateMap<SoftwareOne.BaseLine.EntitiesDto.Category, SoftwareOne.BaseLine.Entities.Category>();
-
+                
             });
     }
 }

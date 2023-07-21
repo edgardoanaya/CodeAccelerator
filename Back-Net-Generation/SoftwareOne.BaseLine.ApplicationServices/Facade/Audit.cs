@@ -7,8 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 // <copyright company="SoftwareOne">Copyright(c) 2023 All Rights Reserved.</copyright>
-// <author>Santiago Gil Roldán</author>
-// <email>mailto:santiago.gil2@softwareone.com</email>
+// <author>Jessica Antía Hortúa</author>
+// <email>mailto:jessica.antia@softwareone.com</email>
 // <summary>Implementation class for the facade of the application services for the Entity (Audit)</summary>
 using AutoMapper;
 
@@ -29,6 +29,6 @@ namespace SoftwareOne.BaseLine.ApplicationServices.Facade
         /// <param name="applicationServices">Context instance for application services</param>
         public Audit(Interfaces.ApplicationServices.Services.IAudit applicationServices) : base(applicationServices) {
             _mapper = new Mapper(configMapperFacade);
-        }
+         }
     }
 }

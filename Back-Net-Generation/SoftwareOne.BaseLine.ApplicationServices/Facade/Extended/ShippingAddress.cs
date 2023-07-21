@@ -26,9 +26,9 @@ namespace SoftwareOne.BaseLine.ApplicationServices.Facade
                 cfg.CreateMap<SoftwareOne.BaseLine.EntitiesDto.ShippingAddress, SoftwareOne.BaseLine.Entities.ShippingAddress>();
                 cfg.CreateMap<SoftwareOne.BaseLine.Entities.Customer, SoftwareOne.BaseLine.EntitiesDto.Customer>();
                 cfg.CreateMap<SoftwareOne.BaseLine.EntitiesDto.Customer, SoftwareOne.BaseLine.Entities.Customer>();
-cfg.CreateMap<SoftwareOne.BaseLine.Entities.City, SoftwareOne.BaseLine.EntitiesDto.City>();
+                cfg.CreateMap<SoftwareOne.BaseLine.Entities.City, SoftwareOne.BaseLine.EntitiesDto.City>();
                 cfg.CreateMap<SoftwareOne.BaseLine.EntitiesDto.City, SoftwareOne.BaseLine.Entities.City>();
-
+                
             });
     }
 }

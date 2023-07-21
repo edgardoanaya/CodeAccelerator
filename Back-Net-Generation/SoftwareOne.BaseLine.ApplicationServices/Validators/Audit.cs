@@ -11,8 +11,8 @@
 // <email>mailto:jessica.antia@softwareone.com</email>
 // <summary>Validator implementation for the Entity (Audit)</summary>
 using FluentValidation;
-using SoftwareOne.BaseLine.ApplicationTexts;
 using SoftwareOne.BaseLine.Core.Validator;
+using SoftwareOne.BaseLine.ApplicationTexts;
 
 namespace Base.Application.Validators
 {
@@ -23,11 +23,10 @@ namespace Base.Application.Validators
         /// </summary>
         public Audit()
         {
-            // Name is mandatory
-            RuleFor(entity => entity.Operation)
+            // Entity is mandatory
+            RuleFor(category => category.Entity)
                 .NotNull().WithMessage(ResourceValidations.FieldCantBeNull)
                 .NotEmpty().WithMessage(ResourceValidations.FieldCantBeEmpty);
-            
         }
     }
 }

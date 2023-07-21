@@ -26,7 +26,7 @@ namespace SoftwareOne.BaseLine.ApplicationServices.Facade
                 cfg.CreateMap<SoftwareOne.BaseLine.EntitiesDto.City, SoftwareOne.BaseLine.Entities.City>();
                 cfg.CreateMap<SoftwareOne.BaseLine.Entities.State, SoftwareOne.BaseLine.EntitiesDto.State>();
                 cfg.CreateMap<SoftwareOne.BaseLine.EntitiesDto.State, SoftwareOne.BaseLine.Entities.State>();
-
+                
             });
     }
 }

@@ -26,9 +26,9 @@ namespace SoftwareOne.BaseLine.ApplicationServices.Facade
                 cfg.CreateMap<SoftwareOne.BaseLine.EntitiesDto.Customer, SoftwareOne.BaseLine.Entities.Customer>();
                 cfg.CreateMap<SoftwareOne.BaseLine.Entities.ShoppingCart, SoftwareOne.BaseLine.EntitiesDto.ShoppingCart>();
                 cfg.CreateMap<SoftwareOne.BaseLine.EntitiesDto.ShoppingCart, SoftwareOne.BaseLine.Entities.ShoppingCart>();
-cfg.CreateMap<SoftwareOne.BaseLine.Entities.ShippingAddress, SoftwareOne.BaseLine.EntitiesDto.ShippingAddress>();
+                cfg.CreateMap<SoftwareOne.BaseLine.Entities.ShippingAddress, SoftwareOne.BaseLine.EntitiesDto.ShippingAddress>();
                 cfg.CreateMap<SoftwareOne.BaseLine.EntitiesDto.ShippingAddress, SoftwareOne.BaseLine.Entities.ShippingAddress>();
-
+                
             });
     }
 }

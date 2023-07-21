@@ -10,7 +10,6 @@
 // <author>Santiago Gil Roldán</author>
 // <email>mailto:santiago.gil2@softwareone.com</email>
 // <summary>Class of the implementation of the services of the application for the Entity (City)</summary>
-
 namespace SoftwareOne.BaseLine.ApplicationServices.Services
 {
     /// <summary>
