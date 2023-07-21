@@ -7,22 +7,22 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 // <copyright company="SoftwareOne">Copyright(c) 2023 All Rights Reserved.</copyright>
-// <author>Santiago Gil Roldán</author>
-// <email>mailto:santiago.gil2@softwareone.com</email>
-// <summary>Class represents the data access for the Entity(Audit)</summary>
+// <author>Jessica Antía Hortúa</author>
+// <email>mailto:jessica.antia@softwareone.com</email>
+// <summary>Class that represents the data access for the entity (Audit)</summary>
 namespace SoftwareOne.BaseLine.DataAccess.SqlServer
 {
     /// <summary>
-    /// Class represents the data access for the Entity(Audit)
+    /// Class that represents the data access for the entity (Audit)
     /// </summary>
     public partial class Audit :
         Core.SqlServer.BaseRepositoryDataAccess<Entities.Audit>,
         Interfaces.DataAccess.IAudit
     {
         /// <summary>
-        /// Constructor to initialize Context Instance [MainContext] for Entity (Audit)
+        /// Constructor to initialize the context instace [MainContext] for the entity (Audit)
         /// </summary>
-        /// <param name="contextEntities">Context Instance to Database</param>
-        public Audit(Core.DataAccess.IMainDataAccessContext contextEntities) : base(contextEntities) { } 
+        /// <param name="context">Database context instace</param>
+        public Audit(Core.DataAccess.IMainDataAccessContext context) : base(context) { } 
     }
 }

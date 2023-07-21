@@ -6,8 +6,7 @@ namespace SoftwareOne.BaseLine.EntitiesDto
     /// Entity to manage the City entity
     /// </summary>
     public partial class City : BaseEntityDto
-    {
-        
+    {        
         /// <summary>
         /// Property to manage the Name field
         /// </summary>

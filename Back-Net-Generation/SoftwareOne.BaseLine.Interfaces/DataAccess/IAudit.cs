@@ -7,13 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 // <copyright company="SoftwareOne">Copyright(c) 2023 All Rights Reserved.</copyright>
-// <author>Santiago Gil Roldán</author>
-// <email>mailto:santiago.gil2@softwareone.com</email>
-// <summary>Interface represents the Implementations of the Dao for the Entity (Audit)</summary>
+// <author>Jessica Antía Hortúa</author>
+// <email>mailto:jessica.antia@softwareone.com</email>
+// <summary>Interface that represents the Dao implementations for the entity (Audit)</summary>
 namespace SoftwareOne.BaseLine.Interfaces.DataAccess
 {
     /// <summary>
-    /// Interface represents the Implementations of the Dao for the Entity (Audit)
+    /// Interface that represents the Dao implementations for the entity (Audit)
     /// </summary>
     public partial interface IAudit :
         Core.DataAccess.IBaseRepositoryDataAccess<Entities.Audit>

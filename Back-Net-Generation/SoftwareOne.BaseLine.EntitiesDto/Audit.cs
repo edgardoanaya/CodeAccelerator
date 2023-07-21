@@ -1,4 +1,4 @@
-using SoftwareOne.BaseLine.Core.Entities;
+﻿using SoftwareOne.BaseLine.Core.Entities;
 
 namespace SoftwareOne.BaseLine.EntitiesDto
 {
@@ -7,7 +7,6 @@ namespace SoftwareOne.BaseLine.EntitiesDto
     /// </summary>
     public partial class Audit : BaseEntityDto
     {
-        
         /// <summary>
         /// Property to manage the Entity field
         /// </summary>
@@ -23,7 +22,7 @@ namespace SoftwareOne.BaseLine.EntitiesDto
         /// <summary>
         /// Property to manage the OldRecord field
         /// </summary>
-        public string? OldRecord { get; set; } = null!;
+        public string OldRecord { get; set; } = null!;
         /// <summary>
         /// Property to manage the UrlSource field
         /// </summary>
@@ -39,10 +38,10 @@ namespace SoftwareOne.BaseLine.EntitiesDto
         /// <summary>
         /// Property to manage the Application field
         /// </summary>
-        public string? Application { get; set; } = ;
+        public string Application { get; set; } = null!;
         /// <summary>
         /// Property to manage the AuditDate field
         /// </summary>
-        public DateTime AuditDate { get; set; } = ;
+        public DateTime AuditDate { get; set; }
     }
 }
