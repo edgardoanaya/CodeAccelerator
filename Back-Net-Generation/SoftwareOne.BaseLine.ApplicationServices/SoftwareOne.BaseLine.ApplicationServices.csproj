@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SoftwareOne.BaseLine.ApplicationTexts\SoftwareOne.BaseLine.ApplicationTexts.csproj" />
+    <ProjectReference Include="..\SoftwareOne.BaseLine.Authorization\SoftwareOne.BaseLine.Authorization.csproj" />
+    <ProjectReference Include="..\SoftwareOne.BaseLine.DataAccess.Authentication\SoftwareOne.BaseLine.Authentication.csproj" />
+    <ProjectReference Include="..\SoftwareOne.BaseLine.DataAccess.SqlServer\SoftwareOne.BaseLine.DataAccess.SqlServer.csproj" />
+    <ProjectReference Include="..\SoftwareOne.BaseLine.Enumerations\SoftwareOne.BaseLine.Enumerations.csproj" />
+    <ProjectReference Include="..\SoftwareOne.BaseLine.Core\SoftwareOne.BaseLine.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Services\Extended\" />
+  </ItemGroup>
+
+</Project>

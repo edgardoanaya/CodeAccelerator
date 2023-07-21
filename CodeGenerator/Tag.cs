@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Xml;
 
 namespace CodeGenerator.Engine
 {
@@ -93,6 +94,24 @@ namespace CodeGenerator.Engine
                     .ScalePrecision(VALUE_PRECISION).WithMessage(ResourceValidations.InvalidDecimal);";
                     valueVariable = valueVariable.Replace("Name", field.Name);
                     valueVariable = valueVariable.Replace("VALUE_PRECISION", field.Precision);
+                }
+            }
+            else if (this.Name.Contains("{MapperFacadeForeignKey}"))
+            {
+                Field field = (Field)entity;
+                if (!string.IsNullOrEmpty(field.Type))
+                {
+                    foreach (Entity nameEntity in Workspace.entities)
+                    {
+                        if(field.Type.Contains(nameEntity.Name))
+                        {
+                            valueVariable = @"cfg.CreateMap<SoftwareOne.BaseLine.Entities.City, SoftwareOne.BaseLine.EntitiesDto.City>();
+                cfg.CreateMap<SoftwareOne.BaseLine.EntitiesDto.City, SoftwareOne.BaseLine.Entities.City>();
+                ";
+                            valueVariable = valueVariable.Replace("City", nameEntity.Name);
+                        }
+                    }
+                    
                 }
             }
             textReplaced = contenido.Replace(this.Name, valueVariable);

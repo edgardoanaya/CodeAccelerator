@@ -37,13 +37,6 @@ namespace CodeGenerator
             codeField.AddElement(new Variable("Operation", codeField.ContentReplace, "{Field.Name}"));
             codeField.AddElement(new Tag("//{DefaultField}", codeField.ContentReplace, "{Field.Default}"));
             codeField.AddElement(new Tag("//{DecoratorField}", codeField.ContentReplace, "{Field.ForeignKey}"));
-
-            //CodeBlock codEntity = new CodeBlock("Entidades", file.ContentReplace
-            //    , "namespace SoftwareOne.BaseLine.Entities\r\n{\r\n    /// <summary>\r\n    /// Entity to manage the City entity\r\n    /// </summary>\r\n    public partial class City : Core.Entities.IEntity\r\n    {\r\n        /// <summary>\r\n        /// Property to manage the Id field\r\n        /// </summary>\r\n        public int Id { get; set; }\r\n        /// <summary>\r\n        /// Property to manage the Entity field\r\n        /// </summary>\r\n        public string Operation { get; set; } = null!;\r\n\t\t        \r\n    }\r\n}\r\n\r\n"
-            //    , "Entity");            
-            //codEntity.AddElement(new Variable("City", codEntity.ContentReplace, "{Entity.Name}"));            
-            //codEntity.AddElement(codeField);
-
             file.AddElement(codeField);
             generator.Rules.Add(file);
 
@@ -52,21 +45,10 @@ namespace CodeGenerator
             //file.AddElement(new Variable("Audit_test", file.ContentReplace, "{Entity.Name}"));
             //file.AddElement(new Variable("City", file.ContentReplace, "{Entity.Name}"));
 
-            //codeField = new CodeBlock("Campos", file.ContentReplace
-            //    , "\r\n        /// <summary>\r\n        /// Property to manage the Entity field\r\n        /// </summary>\r\n        public string Operation { get; set; } = null!;"
-            //    , "Field");
-            //codeField.AddElement(new Variable("string", codeField.ContentReplace, "{Field.Type}"));
-            //codeField.AddElement(new Variable("Operation", codeField.ContentReplace, "{Field.Name}"));
-            //codeField.AddElement(new Variable("null!", codeField.ContentReplace, "{Field.Default}")); 
-            //file.AddElement(codeField);
-            //generator.Rules.Add(file);
-
-
             // SoftwareOne.BaseLine.EntitiesDto
             file = new File("City_Template.cs", @"SoftwareOne.BaseLine.EntitiesDto\City_Template.cs", "Entity");
             file.AddElement(new Variable("City_Template", file.ContentReplace, "{Entity.Name}"));
             file.AddElement(new Variable("City", file.ContentReplace, "{Entity.Name}"));
-
             codeField = new CodeBlock("Campos", file.ContentReplace
                 , "\r\n        /// <summary>\r\n        /// Property to manage the Name field\r\n        /// </summary>\r\n        public string Name { get; set; } //{DefaultField}"
                 , "Field");
@@ -94,8 +76,8 @@ namespace CodeGenerator
             file.AddElement(new Variable("City", file.ContentReplace, "{Entity.Name}"));
             generator.Rules.Add(file);
 
-            // todo: Revisar esta diferente clase Product y ShoppingCart de la linea base
             // SoftwareOne.BaseLine.DataAccess.SqlServer
+            // todo: Revisar esta diferente clase Product y ShoppingCart de la linea base
             file = new File("City_Template.cs", @"SoftwareOne.BaseLine.DataAccess.SqlServer\City_Template.cs", "Entity");
             file.AddElement(new Variable("City_Template", file.ContentReplace, "{Entity.Name}"));
             file.AddElement(new Variable("City", file.ContentReplace, "{Entity.Name}"));
@@ -109,13 +91,15 @@ namespace CodeGenerator
             file.AddElement(codeField);
             generator.Rules.Add(file);
 
-            //// SoftwareOne.BaseLine.DataAccess.SqlServer\Common
-            //file = new File("MainContextApplication.SetEntities.cs", @"SoftwareOne.BaseLine.DataAccess.SqlServer\Common\MainContextApplication.SetEntities.cs", "Entity");
-            //CodeBlock codeEntity = new CodeBlock("Entities", file.ContentReplace
-            //    , "public virtual DbSet<Entities.City>? Citys { get; set; }", "Entity");
-            //codeEntity.AddElement(new Variable("City", codeEntity.ContentReplace, "{Entity.Name}"));
-            //file.AddElement(codeEntity);
-            //generator.Rules.Add(file);
+            // SoftwareOne.BaseLine.DataAccess.SqlServer\Common
+            file = new File("MainContextApplication.SetEntities.cs", @"SoftwareOne.BaseLine.DataAccess.SqlServer\Common\MainContextApplication.SetEntities.cs");
+            codeEntity = new CodeBlock("//{DbSet.Entities.City}"
+                , "public virtual DbSet<Entities.City>? City { get; set; }\r\n        "
+                , "public virtual DbSet<Entities.City>? City { get; set; }"
+                , "Entity");
+            codeEntity.AddElement(new Variable("City", codeEntity.ContentReplace, "{Entity.Name}"));
+            file.AddElement(codeEntity);
+            generator.Rules.Add(file);
 
             // SoftwareOne.BaseLine.ApplicationServices\Facade
             file = new File("City_Template.cs", @"SoftwareOne.BaseLine.ApplicationServices\Facade\City_Template.cs", "Entity");
@@ -123,11 +107,15 @@ namespace CodeGenerator
             file.AddElement(new Variable("City", file.ContentReplace, "{Entity.Name}"));
             generator.Rules.Add(file);
 
-            //// SoftwareOne.BaseLine.ApplicationServices\Facade\Extended
-            //file = new File("City_Template.cs", @"SoftwareOne.BaseLine.ApplicationServices\Facade\Extended\City_Template.cs", "Entity");
-            //file.AddElement(new Variable("City_Template", file.ContentReplace, "{Entity.Name}"));
-            //file.AddElement(new Variable("City", file.ContentReplace, "{Entity.Name}"));
-            //generator.Rules.Add(file);
+            // SoftwareOne.BaseLine.ApplicationServices\Facade\Extended
+            // pendiente: .ForMember(dest => dest.Categories, act => act.Ignore())
+            file = new File("City_Template.cs", @"SoftwareOne.BaseLine.ApplicationServices\Facade\Extended\City_Template.cs", "Entity");
+            file.AddElement(new Variable("City_Template", file.ContentReplace, "{Entity.Name}"));
+            file.AddElement(new Variable("City", file.ContentReplace, "{Entity.Name}"));
+            codeField = new CodeBlock("Campos", file.ContentReplace, "//{MapperFacadeForeignKey}", "Field");
+            codeField.AddElement(new Tag("//{MapperFacadeForeignKey}", codeField.ContentReplace, "{Field.ForeignKey}"));
+            file.AddElement(codeField);
+            generator.Rules.Add(file);
 
             // SoftwareOne.BaseLine.ApplicationServices\Services
             file = new File("City_Template.cs", @"SoftwareOne.BaseLine.ApplicationServices\Services\City_Template.cs", "Entity");
@@ -209,7 +197,7 @@ namespace CodeGenerator
         private void button1_Click(object sender, EventArgs e)
         {
 
-            richTextBox1.Text = generator.Rules[12].Execute();
+            richTextBox1.Text = generator.Rules[9].Execute();
             //textBox2.Text += motor.rules[1].Replicate();
             //textBox2.Text=motor.rules[1].Replace();
             //textBox2.Text = motor.rules[1].ContentReplace;
