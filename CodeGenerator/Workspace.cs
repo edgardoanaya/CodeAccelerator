@@ -29,8 +29,8 @@ namespace CodeGenerator
                             {"Entity2","IAudit" },
                   {"{Entity.Field.Type}","stringEdg" },
                   {"{Entity.Field.Name}","EntityEdg" },
-                  {"WorkspaceFolder","C:\\SWO\\Demo\\Back-Net-Template\\" },
-                  {"GenerationFolder","C:\\SWO\\Demo\\Back-Net-Generation\\" }
+                  {"WorkspaceFolder","C:\\SWO\\CodeAccelerator\\Back-Net-Template\\" },
+                  {"GenerationFolder","C:\\SWO\\CodeAccelerator\\Back-Net-Generation\\" }
               };
 
             entities = new List<Entity>();

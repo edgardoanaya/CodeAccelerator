@@ -3,6 +3,7 @@ using System;
 using System.Windows.Forms;
 using System.Text.Json;
 using System.Reflection;
+using System.Diagnostics;
 
 namespace CodeGenerator
 {
@@ -29,7 +30,6 @@ namespace CodeGenerator
             File file = new File("City_Template.cs", "SoftwareOne.BaseLine.Entities\\City_Template.cs", "Entity");
             file.AddElement(new Variable("City_Template", file.ContentReplace, "{Entity.Name}"));
             file.AddElement(new Variable("City", file.ContentReplace, "{Entity.Name}"));
-
             CodeBlock codeField = new CodeBlock("Campos", file.ContentReplace
                 , "\r\n        /// <summary>\r\n        /// Property to manage the Operation field\r\n        /// </summary>\r\n        //{DecoratorField}\r\n        public string Operation { get; set; } //{DefaultField}"
                 , "Field");
@@ -197,7 +197,7 @@ namespace CodeGenerator
         private void button1_Click(object sender, EventArgs e)
         {
 
-            richTextBox1.Text = generator.Rules[9].Execute();
+            richTextBox1.Text = generator.Rules[11].Execute();
             //textBox2.Text += motor.rules[1].Replicate();
             //textBox2.Text=motor.rules[1].Replace();
             //textBox2.Text = motor.rules[1].ContentReplace;
@@ -206,6 +206,19 @@ namespace CodeGenerator
         private void button4_Click(object sender, EventArgs e)
         {
             richTextBox1.Text = generator.ExcuteRules();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            string sourceFolder = Workspace.inputsConfiguration["WorkspaceFolder"].ToString();
+            string destinatioFolder = Workspace.inputsConfiguration["GenerationFolder"].ToString();
+            richTextBox1.Text = generator.Copyfolder(sourceFolder,destinatioFolder);
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            string destinatioFolder = Workspace.inputsConfiguration["GenerationFolder"].ToString();
+            richTextBox1.Text = generator.DeleteFileRules(destinatioFolder);
         }
     }
 }
