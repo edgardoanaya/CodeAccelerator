@@ -114,6 +114,42 @@ namespace CodeGenerator.Engine
                     
                 }
             }
+            else if (this.Name.Contains("{ApiPostmanCreateField}"))
+            {
+                Entity entityJson = (Entity)entity;
+                string coma=string.Empty;
+                string valueField = string.Empty;
+                foreach (Field field in entityJson.Fields)
+                {
+                    if (!string.IsNullOrEmpty(field.Name))
+                    {
+                        //valueVariable = @"{\n    \""StateLocationId\"": \""3\"",\n    \""Name\"": \""Armenia\""\n};";
+                        valueField = coma + @"\n    \""Name\"": \""3\""" ;
+                        valueVariable += valueField.Replace("Name", field.Name);
+                        coma = ",";
+                    }
+                }
+                valueVariable = "{" + valueVariable + "}";
+
+            }
+            else if (this.Name.Contains("{ApiPostmanUpdateField}"))
+            {
+                Entity entityJson = (Entity)entity;
+                string coma = string.Empty;
+                string valueField = string.Empty;
+                foreach (Field field in entityJson.Fields)
+                {
+                    if (!string.IsNullOrEmpty(field.Name))
+                    {
+                        //valueVariable = @"{\n    \""StateLocationId\"": \""3\"",\n    \""Name\"": \""Armenia\""\n};";
+                        valueField = coma + @"\n    \""Name\"": \""3\""";
+                        valueVariable += valueField.Replace("Name", field.Name);
+                        coma = ",";
+                    }
+                }
+                valueVariable = "{" + valueVariable + @",\n    \""id\"": 32\n}";
+
+            }
             textReplaced = contenido.Replace(this.Name, valueVariable);
 
             return textReplaced;

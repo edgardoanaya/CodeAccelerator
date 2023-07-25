@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace CodeGenerator.Engine
@@ -71,7 +72,7 @@ namespace CodeGenerator.Engine
                         {
                             fileName = generationFolder + file.FilePath;
                             System.IO.File.Delete(fileName);
-                            result = "File deleted: " + fileName;
+                            result += "File deleted: " + fileName;
                         }
                     }
                 }
@@ -81,7 +82,29 @@ namespace CodeGenerator.Engine
                 result = ex.Message;
             }
             return result;
-        }   
+        } 
+        
+        public string SaveFileEntities()
+        {
+            string result = string.Empty;
+            string fileName = string.Empty;
+            string json = string.Empty;
+            try
+            {
+                foreach (Entity entity in Workspace.entities)
+                {
+                    json = JsonSerializer.Serialize(entity);
+                    fileName= @"C:\SWO\CodeAccelerator\Workspace\Entities\" + entity.Name + ".json";
+                    System.IO.File.WriteAllText(fileName, json);
+                    result += "File saved: " + fileName;
+                }
+            }
+            catch (Exception ex)
+            {
+                result = ex.Message;
+            }
+            return result;
+        }
 
     }
 }
