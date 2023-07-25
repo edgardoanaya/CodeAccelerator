@@ -1,4 +1,7 @@
-﻿namespace SoftwareOne.BaseLine.Entities
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
+
+namespace SoftwareOne.BaseLine.Entities
 {
     /// <summary>
     /// Entity to manage the City entity
