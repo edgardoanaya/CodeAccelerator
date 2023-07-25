@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "24e70033-a27d-4769-bb78-df8d50964f11",
+		"_postman_id": "1fc7d7e6-ebae-4447-b93e-1a41dbc1b255",
 		"name": "BackEnd",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "11187008"
+		"_exporter_id": "28679090"
 	},
 	"item": [
 		{
@@ -2026,7 +2026,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"User\":\"ycadavid\",\n    \"password\": \"123456\"\n}",
+							"raw": "{\n    \"User\":\"admindemonet\",\n    \"password\": \"Asdf1234$\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -2074,7 +2074,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"User\":\"jantia2\",\n    \"password\": \"1234526\"\n}",
+							"raw": "{\n    \"User\":\"customerdemonet\",\n    \"password\": \"Asdf1234$\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
