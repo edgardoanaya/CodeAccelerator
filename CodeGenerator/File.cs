@@ -13,7 +13,15 @@ namespace CodeGenerator.Engine
     {
         public string FilePath { get; set; }
 
-        public File(string name, string filePath)
+        public File(string name)
+                      : base(name, string.Empty)
+        {
+            FilePath = string.Empty;
+            this.ContentReplace = string.Empty;
+            this.ContentReplicate= string.Empty;
+        }
+
+        public  File(string name, string filePath)
                       : base(name, string.Empty)
         {
             FilePath = filePath;
@@ -104,7 +112,12 @@ namespace CodeGenerator.Engine
             string contenido = string.Empty;
             try
             {
-                string filePath= Workspace.inputsConfiguration["WorkspaceFolder"].ToString()+ FilePath;
+                string workspaceFolder = Workspace.inputsConfiguration["WorkspaceFolder"].ToString();
+                if (FilePath.Contains(workspaceFolder))
+                {
+                    workspaceFolder = string.Empty;
+                }
+                string filePath= workspaceFolder + FilePath;
                 System.IO.StreamReader sr = new System.IO.StreamReader(filePath);
                 contenido = sr.ReadToEnd();
                 sr.Close();
@@ -116,7 +129,7 @@ namespace CodeGenerator.Engine
             return contenido;
         }
 
-        protected void SaveFile(string contenido, string fileName)
+        public void SaveFile(string contenido, string fileName)
         {
             try
             {
@@ -136,10 +149,30 @@ namespace CodeGenerator.Engine
                 throw ex;
             }
         }
-               
-       
+        public void SaveFile(string contenido)
+        {
+            try
+            {
+                string fileName = Workspace.inputsConfiguration["GenerationFolder"].ToString() + FilePath;
+                
+                if (System.IO.File.Exists(fileName))
+                {
+                    System.IO.File.Delete(fileName);
+                }
 
-        
+                System.IO.StreamWriter sw = new System.IO.StreamWriter(fileName);
+                sw.Write(contenido);
+                sw.Close();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
+
+
 
     }
 }

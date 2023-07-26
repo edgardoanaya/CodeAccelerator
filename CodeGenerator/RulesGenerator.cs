@@ -188,6 +188,17 @@ namespace CodeGenerator
                 file.AddElement(codeEntity);
                 Rules.Add(file);
 
+                // change namespace in .cs
+                Folder folder = new Folder("Folder", @"","*.cs");
+                folder.AddElement(new Variable("SoftwareOne.BaseLine", folder.ContentReplace, "namespace"));
+                Rules.Add(folder);
+
+                // change namespace .csproj
+                folder = new Folder("Folder", @"", "*.csproj");
+                folder.AddElement(new Variable("SoftwareOne.BaseLine", folder.ContentReplace, "namespace"));
+                Rules.Add(folder);
+
+
                 //write the string generator to a file json
                 //string json = JsonSerializer.Serialize(generator);
                 //System.IO.File.WriteAllText(@"C:\SWO\Demo\generatorBackend.json", json);

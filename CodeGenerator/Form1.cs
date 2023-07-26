@@ -40,7 +40,7 @@ namespace CodeGenerator
         private void button1_Click(object sender, EventArgs e)
         {
 
-            richTextBox1.Text = generator.Rules[15].Execute();
+            richTextBox1.Text = generator.Rules[16].Execute();
             //textBox2.Text += motor.rules[1].Replicate();
             //textBox2.Text=motor.rules[1].Replace();
             //textBox2.Text = motor.rules[1].ContentReplace;
