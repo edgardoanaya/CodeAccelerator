@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace CodeGenerator.Engine
 {
@@ -16,12 +18,42 @@ namespace CodeGenerator.Engine
             Rules = new List<Template> ();
         }
 
+        public string Execute()
+        {
+            string result = string.Empty;
+            try
+            {
+                Workspace.Initialize();
+                result = this.SaveFileEntities();
+
+                string sourceFolder = Workspace.inputsConfiguration["WorkspaceFolder"].ToString();
+                string destinatioFolder = Workspace.inputsConfiguration["GenerationFolder"].ToString();
+                result += this.Copyfolder(sourceFolder, destinatioFolder);
+
+                RulesGenerator rulesGenerator = new RulesGenerator("Backend_Net_7");
+                this.Rules = rulesGenerator.GetRules();
+                result += this.Rules.ToString();
+
+                result += this.ExcuteRules();
+                                
+                result += this.DeleteFileTemplates("*_Template.*");
+
+            }
+            catch (Exception ex)
+            {
+                result = ex.Message;
+            }
+            return result;
+
+        }
+
         public string ExcuteRules()
         {
             string result = string.Empty;
             foreach (Template rule in Rules)
             {
-                result=rule.Execute();
+                rule.Execute();
+                result += "Excute Rule: " + rule.Name + "\n";
             }
             return result;
         }
@@ -82,8 +114,30 @@ namespace CodeGenerator.Engine
                 result = ex.Message;
             }
             return result;
-        } 
-        
+        }
+
+        public string DeleteFileTemplates(string searchPattern)
+        {
+            string result = string.Empty;
+            
+            try
+            {
+                string workspaceFolder = Workspace.inputsConfiguration["GenerationFolder"].ToString();
+                string[] files = System.IO.Directory.GetFiles(workspaceFolder, searchPattern
+                    , System.IO.SearchOption.AllDirectories);
+                foreach (string file in files)
+                {                    
+                    System.IO.File.Delete(file);
+                    result += "File deleted: " + file;
+                }
+            }
+            catch (Exception ex)
+            {
+                result = ex.Message;
+            }
+            return result;
+        }
+
         public string SaveFileEntities()
         {
             string result = string.Empty;

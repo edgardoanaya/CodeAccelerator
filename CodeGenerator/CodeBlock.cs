@@ -66,7 +66,7 @@ namespace CodeGenerator.Engine
             return null;
         }
 
-        public string Rename()
+        public virtual string Rename()
         {
             throw new NotImplementedException();
         }

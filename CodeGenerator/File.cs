@@ -13,10 +13,13 @@ namespace CodeGenerator.Engine
     {
         public string FilePath { get; set; }
 
+        public string FileName { get; set; }
+
         public File(string name)
                       : base(name, string.Empty)
         {
             FilePath = string.Empty;
+            FileName = string.Empty;
             this.ContentReplace = string.Empty;
             this.ContentReplicate= string.Empty;
         }
@@ -25,6 +28,7 @@ namespace CodeGenerator.Engine
                       : base(name, string.Empty)
         {
             FilePath = filePath;
+            FileName = this.ExtractFileName(filePath);
             this.ContentReplace = GetContentFile();
         }
 
@@ -32,6 +36,7 @@ namespace CodeGenerator.Engine
                        : base(name, string.Empty, string.Empty, elementsReplicate)
         {
             FilePath = filePath;
+            FileName = this.ExtractFileName(filePath);
             this.ContentReplace = GetContentFile();
             this.ContentReplicate = this.ContentReplace;
         }
@@ -112,7 +117,7 @@ namespace CodeGenerator.Engine
             string contenido = string.Empty;
             try
             {
-                string workspaceFolder = Workspace.inputsConfiguration["WorkspaceFolder"].ToString();
+                string workspaceFolder = Workspace.inputsConfiguration["GenerationFolder"].ToString();
                 if (FilePath.Contains(workspaceFolder))
                 {
                     workspaceFolder = string.Empty;
@@ -168,6 +173,28 @@ namespace CodeGenerator.Engine
             {
                 throw ex;
             }
+        }
+
+        public void DeleteFile()
+        {
+            try
+            {
+                string fileName = Workspace.inputsConfiguration["GenerationFolder"].ToString() + FilePath;
+                if (System.IO.File.Exists(fileName))
+                {
+                    System.IO.File.Delete(fileName);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        protected string ExtractFileName(string path)
+        {
+            string[] pathSplit = path.Split('\\');
+            return pathSplit[pathSplit.Length - 1];
         }
 
 

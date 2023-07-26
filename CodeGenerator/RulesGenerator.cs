@@ -189,12 +189,21 @@ namespace CodeGenerator
                 Rules.Add(file);
 
                 // change namespace in .cs
-                Folder folder = new Folder("Folder", @"","*.cs");
+                Folder folder = new Folder("Folder", @"", "*.cs");
                 folder.AddElement(new Variable("SoftwareOne.BaseLine", folder.ContentReplace, "namespace"));
                 Rules.Add(folder);
 
                 // change namespace .csproj
                 folder = new Folder("Folder", @"", "*.csproj");
+                folder.AddElement(new Variable("SoftwareOne.BaseLine", folder.ContentReplace, "namespace"));
+                Rules.Add(folder);
+
+                // change namespace .sln
+                folder = new Folder("Folder", @"", "*.sln");
+                folder.AddElement(new Variable("SoftwareOne.BaseLine", folder.ContentReplace, "namespace"));
+                Rules.Add(folder);
+
+                folder = new Folder("Folder", "", "*", true);
                 folder.AddElement(new Variable("SoftwareOne.BaseLine", folder.ContentReplace, "namespace"));
                 Rules.Add(folder);
 
