@@ -1,9 +1,6 @@
-﻿using CodeGenerator.Engine;
-using System;
+﻿using System;
 using System.Windows.Forms;
-using System.Text.Json;
-using System.Reflection;
-using System.Diagnostics;
+using SoftwareOne.CodeAccelerator;
 
 namespace CodeGenerator
 {
@@ -31,7 +28,7 @@ namespace CodeGenerator
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Workspace.Initialize();
+           Workspace.Initialize();
 
             richTextBox1.Text = generator.SaveFileEntities();
 
@@ -66,7 +63,7 @@ namespace CodeGenerator
 
         private void button7_Click(object sender, EventArgs e)
         {            
-            richTextBox1.Text = generator.Execute();
+            richTextBox1.Text = generator.Execute("Backend_Net_7");
         }
     }
 }

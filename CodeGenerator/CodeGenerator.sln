@@ -5,6 +5,8 @@ VisualStudioVersion = 17.6.33815.320
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeGenerator", "CodeGenerator.csproj", "{5ECEA324-09C3-4982-93D7-AEE35165B3B8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoftwareOne.CodeAccelerator", "..\SoftwareOne.CodeAccelerator\SoftwareOne.CodeAccelerator.csproj", "{F8C45838-29AF-4E9E-A02C-ABC0DE38D6B5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{5ECEA324-09C3-4982-93D7-AEE35165B3B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5ECEA324-09C3-4982-93D7-AEE35165B3B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5ECEA324-09C3-4982-93D7-AEE35165B3B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8C45838-29AF-4E9E-A02C-ABC0DE38D6B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8C45838-29AF-4E9E-A02C-ABC0DE38D6B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8C45838-29AF-4E9E-A02C-ABC0DE38D6B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8C45838-29AF-4E9E-A02C-ABC0DE38D6B5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
