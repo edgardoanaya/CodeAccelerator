@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace SoftwareOne.CodeAccelerator
 {
@@ -184,7 +185,13 @@ namespace SoftwareOne.CodeAccelerator
                         codeReplicated += nodo.Replicate();
                     }                    
                 }
-                codeReplaced = this.ContentReplace.Replace(this.ContentReplicate, codeReplicated);
+                if(this.Name.StartsWith("{"))
+                {
+                    codeReplaced = this.ContentReplace.Replace(this.Name, codeReplicated);
+                }
+                else
+                    codeReplaced = this.ContentReplace.Replace(this.ContentReplicate, codeReplicated);
+                //codeReplaced = Regex.Replace(this.ContentReplace, this.ContentReplicate, codeReplicated, RegexOptions.Multiline);
             }           
 
             return codeReplaced;

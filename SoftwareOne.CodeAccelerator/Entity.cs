@@ -13,6 +13,11 @@ namespace SoftwareOne.CodeAccelerator
 
         public string OrderDefault { get; set; } = string.Empty;
 
+        public Entity()
+        {
+            this.Fields = new List<Field>();
+        }
+
         public Entity(string name)
         {
             this.Name = name;

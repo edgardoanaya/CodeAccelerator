@@ -21,6 +21,11 @@
 
         public string Precision { get; set; } = string.Empty;
 
+        public Field()
+        {
+            ForeignKey = string.Empty;
+            Decorator = string.Empty;
+        }
 
         public Field(string name, string type, string constant)
         {

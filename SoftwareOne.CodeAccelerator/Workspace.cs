@@ -106,6 +106,7 @@ namespace SoftwareOne.CodeAccelerator
             state.Fields.Add(new Field("Name", "string", "null!", "", "", "50"));
             entities.Add(state);
         }
+        
 
         public static void AddRule(Generator rule)
         {

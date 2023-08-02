@@ -1,9 +1,9 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Net.Http;
-using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace SoftwareOne.CodeAccelerator
@@ -17,6 +17,7 @@ namespace SoftwareOne.CodeAccelerator
             Rules = new List<Template> ();
             Workspace.Initialize();
             Workspace.workload = workload;
+            Workspace.inputsConfiguration["namespace"] = workload.Namespace;
         }
 
         public string Execute(string workloadType)
@@ -25,8 +26,9 @@ namespace SoftwareOne.CodeAccelerator
             try
             {
                 
-                Workspace.LoadEntities();
-                //result = this.SaveFileEntities();
+                //Workspace.LoadEntities();
+                Workspace.entities =this.LoadEntitiesFiles();
+                //result = SaveFileEntities();
 
                 //string sourceFolder = Workspace.workload.TemplateFolder;
                 //string destinatioFolder = Workspace.workload.GenerationFolder;
@@ -44,6 +46,7 @@ namespace SoftwareOne.CodeAccelerator
             catch (Exception ex)
             {
                 result = ex.Message;
+                throw ex;
             }
             return result;
 
@@ -147,7 +150,7 @@ namespace SoftwareOne.CodeAccelerator
             {
                 foreach (Entity entity in Workspace.entities)
                 {
-                    json = JsonSerializer.Serialize(entity);
+                    json = JsonConvert.SerializeObject(entity);
                     fileName= Workspace.workload.EntitiesFolder + entity.Name + ".json";
                     System.IO.File.WriteAllText(fileName, json);
                     result += "File saved: " + fileName;
@@ -183,6 +186,21 @@ namespace SoftwareOne.CodeAccelerator
                         new FileStream(destinationPath, FileMode.Create, FileAccess.Write, FileShare.None, 8192, true));
                 }
             }
+        }
+
+        public List<Entity> LoadEntitiesFiles()
+        {
+            List<Entity> entities = new List<Entity>();
+
+            string[] files = Directory.GetFiles(Workspace.workload.EntitiesFolder, "*.json", SearchOption.AllDirectories);
+
+            foreach (string file in files)
+            {
+                string json = System.IO.File.ReadAllText(file);
+                Entity entity = JsonConvert.DeserializeObject<Entity>(json);
+                entities.Add(entity);
+            }
+            return entities;
         }
 
     }
