@@ -63,7 +63,12 @@ namespace CodeGenerator
 
         private void button7_Click(object sender, EventArgs e)
         {            
-            richTextBox1.Text = generator.Execute("Backend_Net_7");
+            richTextBox1.Text = generator.Execute("Backend_Net_7","");
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            generator.DownloadZipFile("", "");
         }
     }
 }
